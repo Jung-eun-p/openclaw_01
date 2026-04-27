@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 수어 교육 및 통역 보조 플랫폼</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>AI 수어 교육 및 통역 보조 플랫폼</h1>
+      <p>
+        수어 학습 접근성을 높이고, 병원·학교·공공기관에서 빠른 의사소통을 돕는
+        현실형 보조 서비스
+      </p>
+      <p class="notice">
+        본 서비스는 전문 수어 통역사를 대체하지 않고, 교육 및 제한된 상황의 통역
+        보조에 집중합니다.
+      </p>
+    </header>
+
+    <main class="container">
+      <nav class="tabs">
+        <button class="tab active" data-tab="learn">수어 교육</button>
+        <button class="tab" data-tab="assist">통역 보조</button>
+        <button class="tab" data-tab="reverse">수어 → 텍스트 보조</button>
+      </nav>
+
+      <section id="learn" class="panel active">
+        <h2>1) AI 수어 교육 (데모)</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>학습 문장 선택</h3>
+            <select id="lessonSelect"></select>
+            <div id="lessonGuide" class="guide"></div>
+          </div>
+
+          <div class="card">
+            <h3>카메라 입력</h3>
+            <video id="webcam" autoplay playsinline></video>
+            <div class="controls">
+              <button id="startCameraBtn">카메라 시작</button>
+              <button id="stopCameraBtn">카메라 종료</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>AI 피드백 시뮬레이터</h3>
+          <p>
+            손동작/자세/표정 정확도를 입력하면, 선택한 문장 기준으로 AI 피드백을
+            생성합니다.
+          </p>
+          <div class="sliders">
+            <label>손동작 정확도 <input id="handScore" type="range" min="0" max="100" value="60" /></label>
+            <label>자세 정확도 <input id="poseScore" type="range" min="0" max="100" value="60" /></label>
+            <label>표정 정확도 <input id="faceScore" type="range" min="0" max="100" value="60" /></label>
+          </div>
+          <button id="analyzeBtn">AI 피드백 생성</button>
+          <div id="feedback" class="output"></div>
+        </div>
+
+        <div class="card">
+          <h3>학습 이력</h3>
+          <p id="progressSummary">아직 기록이 없습니다.</p>
+          <button id="resetProgressBtn">학습 기록 초기화</button>
+        </div>
+      </section>
+
+      <section id="assist" class="panel">
+        <h2>2) 통역 보조 (텍스트/음성 → 수어 가이드)</h2>
+
+        <div class="card">
+          <h3>현장 템플릿</h3>
+          <div id="templateButtons" class="chips"></div>
+        </div>
+
+        <div class="card">
+          <h3>문장 입력</h3>
+          <textarea id="inputSentence" rows="3" placeholder="예: 접수는 어디에서 하나요?"></textarea>
+          <div class="controls">
+            <button id="voiceBtn">🎤 음성 입력 시작</button>
+            <button id="translateBtn">수어 가이드 생성</button>
+          </div>
+          <div id="signGuide" class="output"></div>
+        </div>
+      </section>
+
+      <section id="reverse" class="panel">
+        <h2>3) 수어 → 텍스트 보조 (시연용)</h2>
+        <div class="card">
+          <h3>기본 표현 선택</h3>
+          <div id="signButtons" class="chips"></div>
+          <div class="controls">
+            <button id="clearComposeBtn">초기화</button>
+            <button id="composeBtn">문장 변환</button>
+          </div>
+          <p><strong>선택한 표현:</strong> <span id="composedSigns">(없음)</span></p>
+          <div id="reverseOutput" class="output"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>© 2026 AI Sign Bridge MVP · 접근성과 포용성 향상을 위한 데모</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
